@@ -13,7 +13,7 @@ def log(msg):
     print(str(msg))
     sys.stdout.flush()
 
-@app.route('https://api.groupme.com/v3/bots/post', methods=['POST'])
+@app.route('/https://api.groupme.com/v3/bots/post', methods=['POST'])
 def webhook():
     data = request.get_json()
     log('Received {}'.format(data))
