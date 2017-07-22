@@ -8,7 +8,7 @@ from flask import Flask, request
 
 TarkSharkBot = Flask(__name__)
 
-@app.route('/',methods=['POST'])
+@TarkSharkBot.route('/',methods=['POST'])
 def webhook():
     data = request.get_json()
 
