@@ -6,9 +6,9 @@ from urllib.request import Request, urlopen
 
 from flask import Flask, request
 
-TarkSharkBot = Flask(__name__)
+app = Flask(__name__)
 
-@TarkSharkBot.route('/',methods=['POST'])
+@app.route('/',methods=['POST'])
 def webhook():
     data = request.get_json()
 
