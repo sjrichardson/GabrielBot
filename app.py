@@ -9,6 +9,10 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+def log(msg):
+    print(str(msg))
+    sys.stdout.flush()
+
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
@@ -30,7 +34,3 @@ def send_message(msg):
          }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
-
-  def log(msg):
-      print(str(msg))
-      sys.stdout.flush()
