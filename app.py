@@ -32,5 +32,5 @@ def send_message(msg):
   json = urlopen(request).read().decode()
 
   def log(msg):
-  print(str(msg))
-  sys.stdout.flush()
+      print(str(msg))
+      sys.stdout.flush()
