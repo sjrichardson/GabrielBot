@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 from flask import Flask, request
 
 app = Flask(__name__)
-@app.route('/', '/tarksharkbot.herokuapp.com',methods=['POST'])
+@app.route('/',methods=['POST'])
 def webhook():
   data = request.get_json()
   log('Recieved {}'.format(data))
