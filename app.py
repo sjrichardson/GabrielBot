@@ -9,6 +9,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/',methods=['POST'])
+
 def webhook():
     data = request.get_json()
 
@@ -23,8 +24,8 @@ def send_message(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
 
   data = {
-          'bot_id' : os.getenv('TARKSHARK_BOT_ID'),
           'text'   : msg,
+          'bot_id' : os.getenv('TARKSHARK_BOT_ID'),
          }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
