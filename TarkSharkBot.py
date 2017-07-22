@@ -6,7 +6,7 @@ from urllib.request import Request, urlopen
 
 from flask import Flask, request
 
-app = Flask(__name__)
+TarkSharkBot = Flask(__name__)
 
 @app.route('/',methods=['POST'])
 def webhook():
@@ -19,7 +19,7 @@ def webhook():
 
     return "ok", 200
 
-ef send_message(msg):
+def send_message(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
 
   data = {
