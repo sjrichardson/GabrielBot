@@ -13,7 +13,7 @@ def log(msg):
     print(str(msg))
     sys.stdout.flush()
 
-@app.route('/', method=['POST'])
+@app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
     log('Received {}'.format(data))
