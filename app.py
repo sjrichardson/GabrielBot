@@ -23,7 +23,7 @@ def webhook():
   log('Recieved {}'.format(data))
 
   # We don't want to reply to ourselves!
-  if data['name'] != 'apnorton-test-bot':
+  if data['name'] != 'TarkShark':
     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
     send_message(msg)
 
@@ -33,7 +33,7 @@ def send_message(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
 
   data = {
-          'bot_id' : os.getenv('GROUPME_BOT_ID'),
+          'bot_id' : os.getenv('TARKSHARK_BOT_ID'),
           'text'   : msg,
          }
   request = Request(url, urlencode(data).encode())
