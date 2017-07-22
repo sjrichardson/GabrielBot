@@ -9,10 +9,10 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/',methods=['POST'])
-
+@app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
+    log('Received {}'.format(data))
 
     #ensure message is not from self
     if data['name'] != 'TarkShark':
@@ -30,3 +30,7 @@ def send_message(msg):
          }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
+
+  def log(msg):
+  print(str(msg))
+  sys.stdout.flush()
