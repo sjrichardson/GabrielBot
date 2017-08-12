@@ -2,34 +2,7 @@ import os
 import sys
 import json
 
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+import requests
 
-from flask import Flask, request
-
-app = Flask(__name__)
-@app.route('/',methods=['POST'])
-def webhook():
-  data = request.get_json()
-  log('Recieved {}'.format(data))
-
-  # We don't want to reply to ourselves!
-  if data['name'] != 'TarkShark':
-    msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-    send_message(msg)
-
-  return "ok", 200
-
-def send_message(msg):
-  url  = 'https://api.groupme.com/v3/bots/post'
-
-  data = {
-          'bot_id' : os.getenv('TARKSHARK_BOT_ID'),
-          'text'   : msg,
-         }
-  request = Request(url, urlencode(data).encode())
-  json = urlopen(request).read().decode()
-
-def log(msg):
-  print(str(msg))
-  sys.stdout.flush()
+postUrl = 'https://api.groupme.com/v3/bots/post'
+r = requests.post(postUrl, data = {'text': 'hi', 'bot_id' : 'd6981906b891bb32c944c96fd3'})
