@@ -6,4 +6,5 @@ import json
 import requests
 
 postUrl = 'https://api.groupme.com/v3/bots/post'
-r = requests.post(postUrl, data = {'text': 'hi', 'bot_id' : 'd6981906b891bb32c944c96fd3'})
+r = requests.get("https://tarksharkbot.herokuapp.com/")
+print r.text
