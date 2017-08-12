@@ -2,6 +2,8 @@ import os
 import sys
 import json
 
+from flask import Flask, request
+
 import requests
 
 postUrl = 'https://api.groupme.com/v3/bots/post'
