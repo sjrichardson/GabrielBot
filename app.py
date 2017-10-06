@@ -38,6 +38,7 @@ def bible_search(reference):
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']
     h = html2text.HTML2Text()
+    print(passage)
     h.ignore_links = True
     ret = h.handle(passage)
     return ret
