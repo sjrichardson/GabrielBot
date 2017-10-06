@@ -47,9 +47,6 @@ def bible_handle(passage):
     req = passage.replace('!bible', '')
     try:
         msg = bible_search(req)
-        print (len(msg))
-        if not msg:
-            print("hi")
         #why 2? I have no idea
         if (len(msg) == 2):
             send_message("Sorry, I couldn't find that passage!")
