@@ -23,4 +23,4 @@ def send_message(msg):
         'text' : msg,
     }
     request = requests.post(url = send_url, data = dumps(send_data))
-    print(request)
+    print(request.text)
