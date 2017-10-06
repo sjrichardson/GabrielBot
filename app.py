@@ -20,7 +20,7 @@ def webhook():
             print (len(msg))
             if not msg:
                 print("hi")
-            if (len(msg.replace(" ", "")) == 0):
+            if (len(msg) == 2):
                 send_message("Sorry, I couldn't find that passage!")
                 return
             if (len(msg) + len(req) + 5 < 1000):
