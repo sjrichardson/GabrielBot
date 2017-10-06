@@ -18,7 +18,7 @@ def webhook():
         try:
             msg = bible_search(req)
             print(msg)
-            if (len(msg) == 0):
+            if (len(msg.replace(" ", "")) == 0):
                 send_message("Sorry, I couldn't find that passage!")
                 return
             if (len(msg) + len(req) + 5 < 1000):
