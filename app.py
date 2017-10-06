@@ -22,3 +22,4 @@ def send_message(msg):
         'text' : msg,
     }
     request = requests.post(url, data)
+    print(request)
