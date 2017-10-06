@@ -17,11 +17,15 @@ def webhook():
         req = data['text']
         req = req.replace('!bible', '')
         msg = bible_search(req)
+        msg.append(req + "ESV")
         if (len(msg) < 450):
             send_message(msg)
         else:
             for chunk in chunks(msg, 450):
                 send_message(chunk)
+        if (len(msg) == 0):
+            send_message("Sorry, I couldn't find that passage!")
+
     return "ok", 200
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
@@ -42,10 +46,8 @@ def bible_search(reference):
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']
     h = html2text.HTML2Text()
-    print(passage)
     h.ignore_links = True
     ret = h.handle(passage)
-    print (ret)
     return ret
 def chunks(s, n):
     for start in range(0, len(s), n):
