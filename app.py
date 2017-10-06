@@ -7,12 +7,13 @@ from json import dumps
 
 from flask import Flask, request
 
+biblekey = "GX2KnKmM5UxrRioM9fcsS7YVTlxo6IwmGfd3TyHU"
 app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-    if data['name'] != 'TarkShark':
-        msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+    if "!bible" in data['text']:
+        msg = "Ding!"
         send_message(msg)
     return "ok", 200
 def send_message(msg):
