@@ -36,4 +36,4 @@ def bible_search(reference):
     print(payload)
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']
-    print(passage)
+    return passage
