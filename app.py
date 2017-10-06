@@ -16,6 +16,7 @@ def webhook():
         req = data['text']
         req = req.replace('!bible', '')
         msg = bible_search(req)
+        send_message(msg)
     return "ok", 200
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
@@ -34,5 +35,5 @@ def bible_search(reference):
     res = requests.get(bible_url, auth=(biblekey, 'X'), params=payload)
     print(payload)
     response = res.json()
-    passage = response['response']['search']['result']['passages']
+    passage = response['response']['search']['result']['passages'][0]['text']
     print(passage)
