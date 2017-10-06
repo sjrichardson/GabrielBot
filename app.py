@@ -22,7 +22,7 @@ def send_message(msg):
         'text' : msg,
         'bot_id' : "d6981906b891bb32c944c96fd3"
     }
-    request = requests .post(send_url, data=dumps(send_data))
+    request = requests.post(send_url, data=dumps(send_data))
 
 def bible_search(reference):
     payload = {
