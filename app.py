@@ -17,6 +17,9 @@ def webhook():
         req = data['text'].replace('!bible', '')
         try:
             msg = bible_search(req)
+            if (len(msg) == 0):
+                send_message("Sorry, I couldn't find that passage!")
+                return
             if (len(msg) + len(req) + 5 < 1000):
                 send_message("{} {} ESV".format(msg,req))
             else:
