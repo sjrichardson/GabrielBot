@@ -15,14 +15,15 @@ def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
         req = data['text'].replace('!bible', '')
-        msg = bible_search(req)
-        if (len(msg) + len(req) + 5 < 1000):
-            send_message("{} {} ESV".format(msg,req))
-        else:
-            for chunk in chunks(msg, 1000):
-                send_message(chunk)
-            send_message("{} ESV".format(req))
-        if (len(msg) == 0):
+        try:
+            msg = bible_search(req)
+            if (len(msg) + len(req) + 5 < 1000):
+                send_message("{} {} ESV".format(msg,req))
+            else:
+                for chunk in chunks(msg, 1000):
+                    send_message(chunk)
+                send_message("{} ESV".format(req))
+        except:
             send_message("Sorry, I couldn't find that passage!")
 
     return "ok", 200
