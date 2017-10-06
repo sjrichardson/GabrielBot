@@ -22,4 +22,4 @@ def send_message(msg):
         'text' : msg,
     }
     request = Request(url, urlencode(data).encode())
-    json = urlopen(request).read().decode()
+    #json = urlopen(request).read().decode()
