@@ -18,7 +18,7 @@ def webhook():
     return "ok", 200
 def send_message(msg):
     url = 'https://api.groupme.com/v3/bots/post'
-    send_data = {
+    data = {
         'text' : msg,
         'bot_id' : os.getenv('TARKSHARK_BOT_ID')
     }
