@@ -16,11 +16,11 @@ def webhook():
         send_message(msg)
     return "ok", 200
 def send_message(msg):
-    url = 'https://api.groupme.com/v3/bots/post'
+    send_url = 'https://api.groupme.com/v3/bots/post'
     print(msg)
-    data = {
+    send_data = {
         'bot_id' : os.getenv('GROUPME_BOT_ID'),
         'text' : msg,
     }
-    request = requests.post(url, dumps(data))
+    request = requests.post(url = send_url, data = dumps(send_data))
     print(request)
