@@ -3,6 +3,7 @@ import sys
 
 from urllib.parse import urlencode
 import requests
+from json import dumps
 
 from flask import Flask, request
 
@@ -21,5 +22,5 @@ def send_message(msg):
         'bot_id' : os.getenv('GROUPME_BOT_ID'),
         'text' : msg,
     }
-    request = requests.post(url, data)
+    request = requests.post(url, dumps(data))
     print(request)
