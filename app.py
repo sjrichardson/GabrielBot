@@ -33,5 +33,5 @@ def bible_search(reference):
         'version': 'ESV'
     }
     bible_url = "https://bibles.org/v2/passages.js"
-    res = requets.get(bible_url, auth=(biblekey, 'X'), params=payload)
+    res = requests.get(bible_url, auth=(biblekey, 'X'), params=payload)
     return res.text
