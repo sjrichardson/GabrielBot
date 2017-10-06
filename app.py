@@ -14,7 +14,7 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        req = data['text']replace('!bible', '')
+        req = data['text'].replace('!bible', '')
         msg = bible_search(req)
         if (len(msg) + len(req) + 5 < 1000):
             send_message("{} {} ESV".format(msg,req))
