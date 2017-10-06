@@ -36,4 +36,4 @@ def bible_search(reference):
     res = requests.get(bible_url, auth=(biblekey, 'X'), params=payload)
     response = res.json()
     passage = response['response']['search']['result']['passages']
-    send_message(passage)
+    print (passage['text'])
