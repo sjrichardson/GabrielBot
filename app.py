@@ -21,6 +21,6 @@ def send_message(msg):
         'text' : msg,
         'bot_id' : "d6981906b891bb32c944c96fd3"
     }
-    request = requests.post(send_url, params=send_data)
+    request = requests.post(send_url, data=dumps(send_data))
     print(request.text)
     print(request.url)
