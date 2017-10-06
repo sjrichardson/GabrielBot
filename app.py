@@ -17,6 +17,7 @@ def webhook():
         req = data['text'].replace('!bible', '')
         try:
             msg = bible_search(req)
+            print(msg)
             if (len(msg) == 0):
                 send_message("Sorry, I couldn't find that passage!")
                 return
