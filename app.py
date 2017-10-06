@@ -17,7 +17,11 @@ def webhook():
         req = data['text']
         req = req.replace('!bible', '')
         msg = bible_search(req)
-        send_message(msg)
+        if (len(msg) < 450):
+            send_message(msg)
+        else:
+            for chunk in chunks(msg, 420):
+                send_message(chunk)
     return "ok", 200
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
@@ -43,3 +47,6 @@ def bible_search(reference):
     ret = h.handle(passage)
     print (ret)
     return ret
+def chunks(s, n):
+    for start in range(0, len(s), n):
+        yield s[start:start+n]
