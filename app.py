@@ -5,6 +5,7 @@ from urllib.parse import urlencode
 import requests
 from json import dumps
 
+import html2text
 from flask import Flask, request
 
 biblekey = "GX2KnKmM5UxrRioM9fcsS7YVTlxo6IwmGfd3TyHU"
@@ -36,4 +37,7 @@ def bible_search(reference):
     print(payload)
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']
-    return passage
+    h = html2text.HTML2Text()
+    h.ignore_links = True
+    ret = h.handle(passage)
+    return ret
