@@ -21,5 +21,5 @@ def send_message(msg):
         'bot_id' : os.getenv('TARKSHARK_BOT_ID'),
         'text' : msg,
     }
-    request = requests.post(url = send_url, data = dumps(send_data))
+    request = requests.post(send_url, data = dumps(send_data))
     print(request.text)
