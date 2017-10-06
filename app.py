@@ -19,7 +19,7 @@ def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
     send_data = {
         'text' : msg,
-        'bot_id' : os.getenv('TARKSHARK_BOT_ID')
+        'bot_id' : "d6981906b891bb32c944c96fd3"
     }
     request = requests.post(send_url, params=send_data)
     print(request.text)
