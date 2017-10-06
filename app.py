@@ -22,5 +22,6 @@ def send_message(msg):
         'bot_id' : os.getenv('GROUPME_BOT_ID'),
         'text' : msg,
     }
+    print (send_data)
     request = requests.post(url = send_url, data = dumps(send_data))
     print(request.text)
