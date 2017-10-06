@@ -13,8 +13,9 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        data['text'].replace('!bible', '')
-        msg = bible_search(data['text'])
+        req = data['text']
+        req.replace('!bible', '')
+        msg = bible_search(req)
     return "ok", 200
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
