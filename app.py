@@ -1,10 +1,13 @@
 import os
 import sys
-import json
 
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
-import requests
+from flask import Flask, request
+
+app = Flask(__name__)
+@app.route('/', methods=['POST'])
 def webhook():
-    postUrl = 'https://api.groupme.com/v3/bots/post'
-    r = requests.get('https://tarksharkbot.herokuapp.com/')
-    q = request.post(postUrl, data = {'text': r.status_code, 'bot_id' : 'd6981906b891bb32c944c96fd3'})
+    data = request.get_json()
+    return "ok", 200
