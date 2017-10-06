@@ -1,9 +1,10 @@
 import os
 import sys
+import json
 
 from urllib.parse import urlencode
-import requests
-from json import dumps
+from urllib.request import Request, urlopen
+
 
 from flask import Flask, request
 
@@ -21,6 +22,8 @@ def send_message(msg):
         'text' : msg,
         'bot_id' : os.getenv('TARKSHARK_BOT_ID')
     }
-    request = requests.post("https://api.groupme.com/v3/bots/post", data = dumps(send_data))
-    print(request.text)
-    print(request.url)
+    #equest = requests.post("https://api.groupme.com/v3/bots/post", data = dumps(send_data))
+    request = Request(url, urlencode(data).encode())
+    json = urlopen(request).read().decode()
+    #print(request.text)
+    #print(request.url)
