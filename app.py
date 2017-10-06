@@ -14,7 +14,7 @@ def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
         req = data['text']
-        req.replace('!bible', '')
+        req = req.replace('!bible', '')
         msg = bible_search(req)
     return "ok", 200
 def send_message(msg):
