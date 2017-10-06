@@ -13,7 +13,8 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        msg = "Ding!"
+        data['text'].replace('!bible', '')
+        msg = bible_search(data['text'])
         send_message(msg)
     return "ok", 200
 def send_message(msg):
@@ -25,3 +26,12 @@ def send_message(msg):
     request = requests.post(send_url, data=dumps(send_data))
     print(request.text)
     print(request.url)
+
+def bible_search(reference):
+    payload = {
+        'q[]': reference,
+        'version': 'ESV'
+    }
+    bible_url = "https://bibles.org/v2/passages.js"
+    res = requets.get(bible_url, auth=(biblekey, 'X'), params=payload)
+    return res.text
