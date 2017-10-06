@@ -16,8 +16,9 @@ def webhook():
     if "!bible" in data['text']:
         req = data['text']
         req = req.replace('!bible', '')
+        ref = "%s ESV" % req
         msg = bible_search(req)
-        msg.append(req + "ESV")
+        msg.append(ref)
         if (len(msg) < 1000):
             send_message(msg)
         else:
