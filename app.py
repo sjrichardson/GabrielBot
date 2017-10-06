@@ -20,7 +20,7 @@ def webhook():
         if (len(msg) < 450):
             send_message(msg)
         else:
-            for chunk in chunks(msg, 420):
+            for chunk in chunks(msg, 450):
                 send_message(chunk)
     return "ok", 200
 def send_message(msg):
