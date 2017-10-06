@@ -18,10 +18,10 @@ def webhook():
         req = req.replace('!bible', '')
         msg = bible_search(req)
         msg.append(req + "ESV")
-        if (len(msg) < 450):
+        if (len(msg) < 1000):
             send_message(msg)
         else:
-            for chunk in chunks(msg, 450):
+            for chunk in chunks(msg, 1000):
                 send_message(chunk)
         if (len(msg) == 0):
             send_message("Sorry, I couldn't find that passage!")
