@@ -15,7 +15,6 @@ def webhook():
     if "!bible" in data['text']:
         data['text'].replace('!bible', '')
         msg = bible_search(data['text'])
-        send_message(msg)
     return "ok", 200
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
@@ -23,9 +22,7 @@ def send_message(msg):
         'text' : msg,
         'bot_id' : "d6981906b891bb32c944c96fd3"
     }
-    request = requests.post(send_url, data=dumps(send_data))
-    print(request.text)
-    print(request.url)
+    request = requests .post(send_url, data=dumps(send_data))
 
 def bible_search(reference):
     payload = {
@@ -34,6 +31,7 @@ def bible_search(reference):
     }
     bible_url = "https://bibles.org/v2/passages.js"
     res = requests.get(bible_url, auth=(biblekey, 'X'), params=payload)
+    print(res.request)
     response = res.json()
     passage = response['response']['search']['result']['passages']
     print(passage)
