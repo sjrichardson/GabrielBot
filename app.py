@@ -41,4 +41,5 @@ def bible_search(reference):
     print(passage)
     h.ignore_links = True
     ret = h.handle(passage)
+    print (ret)
     return ret
