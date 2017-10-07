@@ -2,6 +2,7 @@ import os
 import sys
 import bible
 import weather
+from send import send_message
 
 from urllib.parse import urlencode
 import requests
@@ -16,17 +17,8 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        message = bible.bible_handle(data['text'])
+        bible.bible_handle(data['text'])
     if "!weather" in data['text']:
-        message = weather.retrieve_weather(data['text'])
-    send_message(message)
-    return "ok", 200
+        send_message(weather.retrieve_weather(data['text']))
 
-#send message to the GroupMe chat
-def send_message(msg):
-    send_url = 'https://api.groupme.com/v3/bots/post'
-    send_data = {
-        'text' : msg,
-        'bot_id' : "d6981906b891bb32c944c96fd3"
-    }
-    request = requests.post(send_url, data=dumps(send_data))
+    return "ok", 200
