@@ -10,7 +10,7 @@ def retrieve_weather(location):
         payload = {
             'zip' : '47906',
             'units' : 'imperial',
-            'APPID' : os.getenv('WEATHER_ID')
+            'APPID' : os.getenv('WEATHER_KEY')
 
         }
         weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
