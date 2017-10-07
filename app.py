@@ -15,6 +15,7 @@ def webhook():
     if "!weather" in data['text']:
         send_message(weather.retrieve_weather(data['text']))
     if "!kill" in data['text'] and "Sam Richardson" in data['name']:
+        print ('kill')
         sys.exit()
 
     return "ok", 200
