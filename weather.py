@@ -7,7 +7,6 @@ def retrieve_weather(location):
         location = location.replace('!weather', ' ')
         if location.isspace():
             location = '47906'
-        print(location)
         payload = {
             'zip' : location.strip(),
             'units' : 'imperial',
@@ -22,7 +21,7 @@ def retrieve_weather(location):
         wind_direction = degToCompass(int(response['wind']['deg']))
 
         sky = response['weather'][0]['main']
-        return_string = "Current conditions\ntemp: {}F, wind: {}MPH {}, sky: {}".format(temp, wind, wind_direction, sky)
+        return_string = "Current conditions for {}\ntemp: {}F, wind: {}MPH {}, sky: {}".format(location,temp, wind, wind_direction, sky)
         return return_string
     except:
         return "Cannot retrieve weather at this time"
