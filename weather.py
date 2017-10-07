@@ -4,7 +4,7 @@ import os
 #pulls weather conditions from open weather map
 def retrieve_weather(location):
     try:
-        location = location.replace('!weather ', ' ')
+        location = location.replace('!weather', ' ')
         if location.isspace():
             location = '47906'
         print(location)
