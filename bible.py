@@ -11,8 +11,8 @@ def bible_search(reference):
         'q[]': reference,
         'version': 'ESV'
     }
-    bible_url = "https://bibles.org/v2/passages.js"
-    res = requests.get(bible_url, auth=(biblekey, 'X'), params=payload)
+
+    res = requests.get(os.getenv('BIBLE_URL'), auth=(biblekey, 'X'), params=payload)
     print(payload)
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']

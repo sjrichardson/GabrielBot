@@ -14,7 +14,7 @@ def retrieve_weather(location):
             'APPID' : os.getenv('WEATHER_KEY')
 
         }
-        weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
+        weather = requests.get(os.getenv('WEATHER_URL'), params=payload)
         response = weather.json()
         print(response)
         temp = response['main']['temp']
