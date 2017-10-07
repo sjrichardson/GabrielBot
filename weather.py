@@ -1,10 +1,15 @@
 import requests
 #pulls weather conditions from open weather map
 def retrieve_weather(location):
+
     location = location.replace('!weather ', '')
     if len(location) == 0:
         location = '47906'
-    weather = requests.get("api.openweathermap.org/data/2.5/weather", params=location)
+    payload = {
+        'location' : location,
+        'APPID' : 'f95d01fd26ff7a19e342a0621bd1fd93'
+    }
+    weather = requests.get("api.openweathermap.org/data/2.5/weather", params=payload)
     response = weather.json()
 
     temp = response['main']['temp']
