@@ -8,7 +8,7 @@ def retrieve_weather(location):
         if len(location) == 0:
             location = '47906'
         payload = {
-            'zip' : '47906',
+            'zip' : location.strip(),
             'units' : 'imperial',
             'APPID' : os.getenv('WEATHER_KEY')
 
