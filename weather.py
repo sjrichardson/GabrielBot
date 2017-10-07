@@ -1,3 +1,4 @@
+import requests
 #pulls weather conditions from open weather map
 def retrieve_weather(location):
     location = location.replace('!weather ', '')

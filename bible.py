@@ -23,23 +23,23 @@ def bible_search(reference):
 #sends retrieved scripture to the chat
 def bible_handle(passage):
     req = passage.replace('!bible', '')
-    #try:
-    msg = bible_search(req)
-    print (msg)
-    #why 2? I have no idea
-    if (len(msg) == 2):
+    try:
+        msg = bible_search(req)
+        print (msg)
+        #why 2? I have no idea
+        if (len(msg) == 2):
+            send_message("Sorry, I couldn't find that passage!")
+            return
+        if (len(msg) + len(req) + 5 < 1000):
+            send_message("{} {} ESV".format(msg,req))
+        elif len(msg) + len(req) > 2000:
+            send_message("Too much to print... shorten your search")
+        else:
+            for chunk in chunks(msg, 1000):
+                send_message(chunk)
+            send_message("{} ESV".format(req))
+    except:
         send_message("Sorry, I couldn't find that passage!")
-        return
-    if (len(msg) + len(req) + 5 < 1000):
-        send_message("{} {} ESV".format(msg,req))
-    elif len(msg) + len(req) > 2000:
-        send_message("Too much to print...")
-    else:
-        for chunk in chunks(msg, 1000):
-            send_message(chunk)
-        send_message("{} ESV".format(req))
-    # except:
-    #     send_message("Sorry, I couldn't find that passage!")
 
 #splits message (s) into chunks of size n
 def chunks(s, n):
