@@ -6,7 +6,7 @@ def retrieve_weather(location):
     try:
         location = location.replace('!weather ', '')
         print (location)
-        if location.isspace()
+        if location.isspace():
             location = '47906'
         payload = {
             'zip' : location.strip(),
