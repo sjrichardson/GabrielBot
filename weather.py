@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 #pulls weather conditions from open weather map
 def retrieve_weather(location):
     try:
