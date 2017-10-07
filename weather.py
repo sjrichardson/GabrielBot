@@ -5,7 +5,6 @@ import os
 def retrieve_weather(location):
     try:
         location = location.replace('!weather ', ' ')
-        print(loc)
         if location.isspace():
             location = '47906'
         print(location)
