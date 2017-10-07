@@ -25,7 +25,7 @@ def bible_handle(passage):
             return
         if (len(msg) + len(req) + 5 < 1000):
             send_message("{} {} ESV".format(msg,req))
-        else: if (len(msg) + len(req) > 2000):
+        elif len(msg) + len(req) > 2000:
             send_message("Too much to print...")
         else:
             for chunk in chunks(msg, 1000):
