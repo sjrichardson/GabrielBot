@@ -6,8 +6,6 @@ from send import send_message
 from json import dumps
 
 from flask import Flask, request
-
-biblekey = "GX2KnKmM5UxrRioM9fcsS7YVTlxo6IwmGfd3TyHU"
 app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webhook():
