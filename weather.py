@@ -8,14 +8,16 @@ def retrieve_weather(location):
         location = '47906'
     payload = {
         'zip' : '47906',
+        'units' : 'imperial',
         'APPID' : 'f95d01fd26ff7a19e342a0621bd1fd93'
+
     }
     weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
     response = weather.json()
     print(response)
     temp = response['main']['temp']
     wind = response['wind']['speed']
-    wind_direction = degToCompass((int)response['wind']['deg'])
+    wind_direction = degToCompass(int(response['wind']['deg']))
 
     sky = response['weather'][0]['main']
     return_string = "Current conditions\n temp: {}, wind: {} {}, sky: {}".format(temp, wind, wind_direction, sky)
