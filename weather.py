@@ -12,9 +12,8 @@ def retrieve_weather(location):
     }
     weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
     response = weather.json()
-
+    print(response)
     temp = response['main']['temp']
-    print (temp)
     wind = response['main']['wind']['speed']
     wind_direction = degToCompass(response['main']['wind']['deg'])
 
