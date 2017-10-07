@@ -15,10 +15,10 @@ def retrieve_weather(location):
     print(response)
     temp = response['main']['temp']
     wind = response['wind']['speed']
-    wind_direction = degToCompass(response['wind']['deg'])
+    wind_direction = degToCompass((int)response['wind']['deg'])
 
     sky = response['weather'][0]['main']
-    return_string = "Current conditions\n temp: {}, wind: {}{}, sky: {}".format(temp, wind, wind_direction, sky)
+    return_string = "Current conditions\n temp: {}, wind: {} {}, sky: {}".format(temp, wind, wind_direction, sky)
 
     return return_string
 
