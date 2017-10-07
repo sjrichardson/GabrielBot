@@ -9,7 +9,7 @@ def retrieve_weather(location):
         'location' : location,
         'APPID' : 'f95d01fd26ff7a19e342a0621bd1fd93'
     }
-    weather = requests.get("api.openweathermap.org/data/2.5/weather", params=payload)
+    weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
     response = weather.json()
 
     temp = response['main']['temp']
