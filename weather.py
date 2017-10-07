@@ -14,8 +14,8 @@ def retrieve_weather(location):
     response = weather.json()
     print(response)
     temp = response['main']['temp']
-    wind = response['main']['wind']['speed']
-    wind_direction = degToCompass(response['main']['wind']['deg'])
+    wind = response['wind']['speed']
+    wind_direction = degToCompass(response['wind']['deg'])
 
     sky = response['weather'][0]['main']
     return_string = "Current conditions\n temp: {}, wind: {}{}, sky: {}".format(temp, wind, wind_direction, sky)
