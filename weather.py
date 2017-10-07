@@ -14,6 +14,7 @@ def retrieve_weather(location):
     response = weather.json()
 
     temp = response['main']['temp']
+    print (temp)
     wind = response['main']['wind']['speed']
     wind_direction = degToCompass(response['main']['wind']['deg'])
 
