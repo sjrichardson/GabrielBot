@@ -1,3 +1,4 @@
+import requests
 from send import send_message
 #searches for given passage
 def bible_search(reference):

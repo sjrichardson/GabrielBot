@@ -3,9 +3,6 @@ import sys
 import bible
 import weather
 from send import send_message
-
-from urllib.parse import urlencode
-import requests
 from json import dumps
 
 import html2text
