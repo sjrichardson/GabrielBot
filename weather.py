@@ -21,7 +21,7 @@ def retrieve_weather(location):
         wind_direction = degToCompass(int(response['wind']['deg']))
 
         sky = response['weather'][0]['main']
-        return_string = "Current conditions\ntemp: {}, wind: {} {}, sky: {}".format(temp, wind, wind_direction, sky)
+        return_string = "Current conditions\ntemp: {}F, wind: {} {}, sky: {}".format(temp, wind, wind_direction, sky)
         return return_string
     except:
         return "Cannot retrieve weather at this time"
