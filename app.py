@@ -16,9 +16,9 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        bible_handle(data['text'])
+        bible.bible_handle(data['text'])
     if "!weather" in data['text']:
-        retrieve_weather(data['text'])
+        weather.retrieve_weather(data['text'])
     return "ok", 200
 
 #send message to the GroupMe chat
