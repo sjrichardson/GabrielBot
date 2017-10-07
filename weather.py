@@ -7,7 +7,7 @@ def retrieve_weather(location):
     if len(location) == 0:
         location = '47906'
     payload = {
-        'location' : location,
+        'zip' : location,
         'APPID' : 'f95d01fd26ff7a19e342a0621bd1fd93'
     }
     weather = requests.get("http://api.openweathermap.org/data/2.5/weather", params=payload)
