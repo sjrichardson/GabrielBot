@@ -16,9 +16,9 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
     if "!bible" in data['text']:
-        message = bible.bible_handle(data['text']))
+        message = bible.bible_handle(data['text'])
     if "!weather" in data['text']:
-        message = weather.retrieve_weather(data['text']))
+        message = weather.retrieve_weather(data['text'])
     send_message(message)
     return "ok", 200
 
