@@ -5,7 +5,6 @@ import weather
 from send import send_message
 from json import dumps
 
-import html2text
 from flask import Flask, request
 
 biblekey = "GX2KnKmM5UxrRioM9fcsS7YVTlxo6IwmGfd3TyHU"

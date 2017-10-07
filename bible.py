@@ -1,5 +1,7 @@
 import requests
 from send import send_message
+import json
+import html2text
 #searches for given passage
 def bible_search(reference):
     payload = {
