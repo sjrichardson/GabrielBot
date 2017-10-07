@@ -8,6 +8,7 @@ def retrieve_weather(location):
         print (location)
         if location.isspace():
             location = '47906'
+        print(location)
         payload = {
             'zip' : location.strip(),
             'units' : 'imperial',
