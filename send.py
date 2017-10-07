@@ -1,5 +1,5 @@
 import requests
-import json
+from json import dumps
 #send message to the GroupMe chat
 def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
