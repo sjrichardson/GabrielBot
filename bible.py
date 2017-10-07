@@ -3,7 +3,7 @@ from send import send_message
 import json
 import html2text
 
-biblekey = "GX2KnKmM5UxrRioM9fcsS7YVTlxo6IwmGfd3TyHU"
+biblekey = os.getenv("BIBLE_KEY")
 #searches for given passage
 def bible_search(reference):
     payload = {
