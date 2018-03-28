@@ -17,24 +17,25 @@ def bible_search(reference):
     print(payload)
     response = res.json()
     print(response.json())
-    passage = response['response']['search']['result']['passages'][0]['text']
+    passage = response['passages']
+    ref = response['canonical']
     h = html2text.HTML2Text()
     h.ignore_links = True
     ret = h.handle(passage)
-    return ret
+    return (ret, ref)
 
 #sends retrieved scripture to the chat
 def bible_handle(passage):
     req = passage.replace('!bible', '')
     try:
-        msg = bible_search(req)
+        msg, ref = bible_search(req)
         print (msg)
         #why 2? I have no idea
         if (len(msg) == 2):
             send_message("Sorry, I couldn't find that passage!")
             return
         if (len(msg) + len(req) + 5 < 1000):
-            send_message("{} {} ESV".format(msg,req))
+            send_message("{} {} ESV".format(msg,ref))
         elif len(msg) + len(req) > 2000:
             send_message("Too much to print... shorten your search")
         else:
