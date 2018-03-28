@@ -13,6 +13,7 @@ def bible_search(reference):
     }
 
     res = requests.get(os.getenv('BIBLE_URL'), auth=(biblekey, 'X'), params=payload)
+    print(res.url)
     print(payload)
     response = res.json()
     passage = response['response']['search']['result']['passages'][0]['text']
@@ -25,7 +26,7 @@ def bible_search(reference):
 def bible_handle(passage):
     req = passage.replace('!bible', '')
     try:
-        msg = bible_search(req)
+        msg = bible_search(req.lstrp(' '))
         print (msg)
         #why 2? I have no idea
         if (len(msg) == 2):
