@@ -16,7 +16,7 @@ def bible_search(reference):
     print(res.url)
     print(payload)
     response = res.json()
-    print(response.json())
+    print(response)
     passage = response['passages']
     ref = response['canonical']
     h = html2text.HTML2Text()
