@@ -7,12 +7,12 @@ import os
 biblekey = os.getenv("BIBLE_KEY")
 #searches for given passage
 def bible_search(reference):
+    header = { 'Authorization' : os.getenv('BIBLE_KEY')}
     payload = {
-        "q[]" : reference,
-        "version" : "eng-ESV"
+        "q" : reference
     }
 
-    res = requests.get(os.getenv('BIBLE_URL'), auth=(biblekey, 'X'), params=payload)
+    res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
     print(res.url)
     print(payload)
     response = res.json()
