@@ -26,7 +26,7 @@ def bible_search(reference):
 def bible_handle(passage):
     req = passage.replace('!bible', '')
     try:
-        msg = bible_search(req.lstrp(' '))
+        msg = bible_search(req)
         print (msg)
         #why 2? I have no idea
         if (len(msg) == 2):
