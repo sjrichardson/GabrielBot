@@ -3,6 +3,7 @@ from send import send_message
 import json
 import html2text
 import os
+import re
 
 biblekey = os.getenv("BIBLE_KEY")
 #searches for given passage
@@ -15,6 +16,7 @@ def bible_search(reference):
     res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
     response = res.json()
     passage = response['passages'][0].split('\n\nFootnotes')[0]
+    passage = re.sub(r'(\d+)', '', passage)
     return (passage)
 
 #sends retrieved scripture to the chat
