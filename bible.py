@@ -13,9 +13,8 @@ def bible_search(reference):
     }
 
     res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
-    print(res.url)
-    print(res.text)
     response = res.json()
+    print(response)
     passage = response['passages']
     ref = response['canonical']
     h = html2text.HTML2Text()
