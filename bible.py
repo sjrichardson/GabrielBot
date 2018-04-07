@@ -14,32 +14,28 @@ def bible_search(reference):
 
     res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
     response = res.json()
-    passage = response['passages'][0]
-    print('passage before %s\n' % passage)
-    newpassage = passage.split('Footnotes')[0]
+    passage = response['passages'][0].split('\n\nFootnotes')[0]
     print('passage after %s\n' % newpassage)
-    ref = response['canonical']
-    print('ref %s\n' % ref)
-    return (passage, ref)
+    return (passage)
 
 #sends retrieved scripture to the chat
 def bible_handle(passage):
     req = passage.replace('!bible', '')
     try:
-        msg, ref = bible_search(req)
+        msg = bible_search(req)
         print (msg)
         #why 2? I have no idea
         if (len(msg) == 2):
             send_message("Sorry, I couldn't find that passage!")
             return
         if (len(msg) + len(req) + 5 < 1000):
-            send_message("{} {} ESV".format(msg,ref))
+            send_message("{}".format(msg))
         elif len(msg) + len(req) > 2000:
             send_message("Too much to print... shorten your search")
         else:
             for chunk in chunks(msg, 1000):
                 send_message(chunk)
-            send_message("{} ESV".format(req))
+            # send_message("{} ESV".format(req))
     except:
         send_message("Sorry, I couldn't find that passage!")
 
