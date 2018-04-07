@@ -16,8 +16,8 @@ def bible_search(reference):
     response = res.json()
     passage = response['passages']
     print('passage before %s\n' % passage)
-    passage = passage.split('Footnotes')[0]
-    print('passage after %s\n' % passage)
+    newpassage = passage.split('Footnotes')[0]
+    print('passage after %s\n' % newpassage)
     ref = response['canonical']
     print('ref %s\n' % ref)
     return (passage, ref)
