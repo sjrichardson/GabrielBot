@@ -17,6 +17,7 @@ def bible_search(reference):
     response = res.json()
     passage = response['passages'][0].split('\n\nFootnotes')[0]
     passage = re.sub(r'\(\d+\)', '', passage)
+    passage = passage.replace('\n\n', '\n')
     return (passage)
 
 #sends retrieved scripture to the chat
