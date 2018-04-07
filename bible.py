@@ -19,10 +19,7 @@ def bible_search(reference):
     print('passage %s\n' % passage)
     ref = response['canonical']
     print('ref %s\n' % ref)
-    h = html2text.HTML2Text()
-    h.ignore_links = True
-    ret = h.handle(passage)
-    return (ret, ref)
+    return (passage, ref)
 
 #sends retrieved scripture to the chat
 def bible_handle(passage):
