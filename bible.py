@@ -17,7 +17,7 @@ def bible_search(reference):
     response = res.json()
     passage = response['passages'][0].split('\n\nFootnotes')[0]
     passage = re.sub(r'\(\d+\)', '', passage)
-    passage = passage.replace('\n\n', '\n')
+    passage = passage.replace('\n\n', '\n').replace('(ESV)','')
     return (passage)
 
 #sends retrieved scripture to the chat
@@ -31,13 +31,13 @@ def bible_handle(passage):
             send_message("Sorry, I couldn't find that passage!")
             return
         if (len(msg) + len(req) + 5 < 1000):
-            send_message("{}".format(msg))
+            send_message("{} (ESV)".format(msg))
         elif len(msg) + len(req) > 2000:
             send_message("Too much to print... shorten your search")
         else:
             for chunk in chunks(msg, 1000):
                 send_message(chunk)
-            # send_message("{} ESV".format(req))
+             send_message("(ESV)")
     except:
         send_message("Sorry, I couldn't find that passage!")
 
