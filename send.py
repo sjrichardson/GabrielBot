@@ -6,6 +6,6 @@ def send_message(msg):
     send_url = 'https://api.groupme.com/v3/bots/post'
     send_data = {
         'text' : msg,
-        'bot_id' : os.getenv('TEST_ID')
+        'bot_id' : os.getenv('TARK_ID')
     }
     request = requests.post(send_url, data=dumps(send_data))
