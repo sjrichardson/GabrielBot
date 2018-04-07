@@ -15,7 +15,6 @@ def bible_search(reference):
     res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
     response = res.json()
     passage = response['passages'][0].split('\n\nFootnotes')[0]
-    print('passage after %s\n' % newpassage)
     return (passage)
 
 #sends retrieved scripture to the chat
