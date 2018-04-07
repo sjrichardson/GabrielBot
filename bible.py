@@ -14,7 +14,7 @@ def bible_search(reference):
 
     res = requests.get(os.getenv('BIBLE_URL'), headers=header, params=payload)
     response = res.json()
-    passage = response['passages']
+    passage = response['passages'][0]
     print('passage before %s\n' % passage)
     newpassage = passage.split('Footnotes')[0]
     print('passage after %s\n' % newpassage)
