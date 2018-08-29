@@ -1,7 +1,7 @@
 import requests
 import json
 import os
-#pulls weather conditions from open weather map
+#pulls weather conditions from open weather map https://openweathermap.org/api
 def retrieve_weather(location):
     try:
         location = location.replace('!weather', ' ')
@@ -19,9 +19,10 @@ def retrieve_weather(location):
         temp = response['main']['temp']
         wind = response['wind']['speed']
         wind_direction = degToCompass(int(response['wind']['deg']))
+        humidity = response['main']['humidity']
 
         sky = response['weather'][0]['main']
-        return_string = "Current conditions for {}\ntemp: {}F, wind: {}MPH {}, sky: {}".format(location,temp, wind, wind_direction, sky)
+        return_string = "Current conditions for {}\ntemp: {}F, wind: {}MPH {}, humidity: {}%, sky: {}".format(location,temp, wind, wind_direction, humidity, sky)
         return return_string
     except:
         return "Cannot retrieve weather at this time"
